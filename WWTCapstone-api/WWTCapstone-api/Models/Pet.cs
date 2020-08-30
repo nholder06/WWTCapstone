@@ -17,4 +17,4 @@ namespace WWTCapstone_api.Models
         public PetProfile PetProfile { get; set; }
     }
 }
-}
+
