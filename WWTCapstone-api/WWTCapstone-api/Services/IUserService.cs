@@ -51,7 +51,7 @@ namespace WWTCapstone_api.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required.");
 
-            if (_context.Users.Any(x => x.Email == email))
+            if (_context.Users.Any(x => x.Email == user.Email))
                 throw new AppException("This email \""+ user.Email + "\" already has an account.");
 
             byte[] passwordHash, passwordSalt;

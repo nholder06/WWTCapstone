@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace WWTCapstone_api
 {
@@ -13,14 +7,22 @@ namespace WWTCapstone_api
     {
         public static void Main(string[] args)
         {
+            //BuildWebHost(args).Run();
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IWebHost CreateHostBuilder(string[] args) =>
+           //BuildWebHost(string[] args =>    
+           //WebHost.CreateDefaultBuilder(args)
+           //.UseStartup<Startup>()
+           //.UserUrls("http://localhost:4000")
+           //.Build();
+
+           CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+             .ConfigureWebHostDefaults(webBuilder =>
+             {
+               webBuilder.UseStartup<Startup>();
+            });
     }
 }
