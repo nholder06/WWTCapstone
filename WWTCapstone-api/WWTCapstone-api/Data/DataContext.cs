@@ -7,6 +7,6 @@ namespace WWTCapstone_api.Helpers
     {
         public DataContext(DbContextOptions<DataContext> options) :base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

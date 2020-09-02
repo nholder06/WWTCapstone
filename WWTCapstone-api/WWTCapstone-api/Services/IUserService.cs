@@ -28,7 +28,7 @@ namespace WWTCapstone_api.Services
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Email == email);
+            var user = _context.User.SingleOrDefault(x => x.Email == email);
 
             if (user == null)
                 return null;
@@ -40,18 +40,18 @@ namespace WWTCapstone_api.Services
         }
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _context.User;
         }
         public User GetById(int id)
         {
-            return _context.Users.Find(id);
+            return _context.User.Find(id);
         }
         public User Create(User user, string password)
         {
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required.");
 
-            if (_context.Users.Any(x => x.Email == user.Email))
+            if (_context.User.Any(x => x.Email == user.Email))
                 throw new AppException("This email \""+ user.Email + "\" already has an account.");
 
             byte[] passwordHash, passwordSalt;
@@ -60,7 +60,7 @@ namespace WWTCapstone_api.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            _context.Users.Add(user);
+            _context.User.Add(user);
             _context.SaveChanges();
 
             return user;
@@ -68,13 +68,13 @@ namespace WWTCapstone_api.Services
 
         public void Update(User userParam, string password = null)
         {
-            var user = _context.Users.Find(userParam.Id);
+            var user = _context.User.Find(userParam.Id);
 
             if (user == null)
                 throw new AppException("User not found.");
             if (userParam.Email != user.Email)
             {
-                if (_context.Users.Any(x => x.Email == userParam.Email))
+                if (_context.User.Any(x => x.Email == userParam.Email))
                     throw new AppException("Email " + userParam.Email + "is already taken.");
             }
 
@@ -90,16 +90,16 @@ namespace WWTCapstone_api.Services
                 user.PasswordSalt = passwordSalt;
             }
 
-            _context.Users.Update(user);
+            _context.User.Update(user);
             _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = _context.User.Find(id);
             if (user != null)
             {
-                _context.Users.Remove(user);
+                _context.User.Remove(user);
                 _context.SaveChanges();
             }
         }

@@ -3,12 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WWTCapstone_api.Data;
+using WWTCapstone_api.Helpers;
 
 namespace WWTCapstone_api.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20200829231526_InitialCreate")]
     partial class InitialCreate
     {

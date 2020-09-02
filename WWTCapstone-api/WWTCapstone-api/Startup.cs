@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using WWTCapstone_api.Helpers;
 using WWTCapstone_api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace WWTCapstone_api
 {
@@ -32,7 +33,7 @@ namespace WWTCapstone_api
             services.AddCors();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddAutoMapper();
+            //services.AddAutoMapper();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -42,7 +43,7 @@ namespace WWTCapstone_api
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
                 .AddJwtBearer(x =>
                 {
@@ -52,7 +53,7 @@ namespace WWTCapstone_api
                         {
                             var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
                             var userId = int.Parse(context.Principal.Identity.Name);
-                            var user = UserService.GetById(userId);
+                            var user = userService.GetById(userId);
                             if (user == null)
                             {
                                 context.Fail("Unauthorized");
@@ -61,7 +62,7 @@ namespace WWTCapstone_api
                         }
 
                     };
-                    x.ReuiredHttpsMetadata = false;
+                    x.RequireHttpsMetadata = false;
                     x.SaveToken = true;
                     x.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -83,7 +84,7 @@ namespace WWTCapstone_api
             .AllowAnyMethod());
 
             app.UseAuthentication();
-            app.UseMvc();
+            //app.UseMvc();
 
             if (env.IsDevelopment())
             {
