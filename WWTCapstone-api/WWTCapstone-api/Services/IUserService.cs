@@ -27,10 +27,12 @@ namespace WWTCapstone_api.Services
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
-            var user = _context.Users.SingleOrDefault(x => x.Email = email);
+
+            var user = _context.Users.SingleOrDefault(x => x.Email == email);
 
             if (user == null)
                 return null;
+
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 return null;
 
@@ -48,6 +50,7 @@ namespace WWTCapstone_api.Services
         {
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required.");
+
             if (_context.Users.Any(x => x.Email == email))
                 throw new AppException("This email \""+ user.Email + "\" already has an account.");
 

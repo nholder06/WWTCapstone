@@ -5,8 +5,11 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using WWTCapstone_api.Helpers;
 using WWTCapstone_api.Models;
+using WWTCapstone_api.Services;
 
 namespace WWTCapstone_api.Controllers
 {
@@ -26,7 +29,7 @@ namespace WWTCapstone_api.Controllers
         {
             _userService = userService;
             _mapper = mapper;
-            _appSettings = appSettings;
+            _appSettings = appSettings.Value;
         }
 
         [AllowAnonymous]
@@ -56,7 +59,7 @@ namespace WWTCapstone_api.Controllers
             {
                 Id = user.Id,
                 FullName = user.FullName,
-                Email = user.Email
+                Email = user.Email,
                 Token = tokenString
             });
         }
@@ -86,7 +89,7 @@ namespace WWTCapstone_api.Controllers
             return Ok(userDtos);
         }
 
-        [HttpGet("{id}"]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var user = _userService.GetById(id);
@@ -97,7 +100,7 @@ namespace WWTCapstone_api.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UserDto userDto)
         {
-            var user = _mapper.Map<User>(userDto)
+            var user = _mapper.Map<User>(userDto);
             user.Id = id;
 
             try
@@ -111,7 +114,7 @@ namespace WWTCapstone_api.Controllers
             }
         }
 
-        [HttpDelete("{id}"]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             _userService.Delete(id);
