@@ -8826,11 +8826,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\WorkSpace\\WWT Capstone\\WWTCapstone-api\\WWTCapstone-api\\WWTCapstone-api.csproj",
+      "projectUniqueName": "C:\\WorkSpace\\WWTCapstone\\WWTCapstone-api\\WWTCapstone-api\\WWTCapstone-api.csproj",
       "projectName": "WWTCapstone-api",
-      "projectPath": "C:\\WorkSpace\\WWT Capstone\\WWTCapstone-api\\WWTCapstone-api\\WWTCapstone-api.csproj",
+      "projectPath": "C:\\WorkSpace\\WWTCapstone\\WWTCapstone-api\\WWTCapstone-api\\WWTCapstone-api.csproj",
       "packagesPath": "C:\\Users\\holdern\\.nuget\\packages\\",
-      "outputPath": "C:\\WorkSpace\\WWT Capstone\\WWTCapstone-api\\WWTCapstone-api\\obj\\",
+      "outputPath": "C:\\WorkSpace\\WWTCapstone\\WWTCapstone-api\\WWTCapstone-api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\holdern\\AppData\\Roaming\\NuGet\\NuGet.Config",
