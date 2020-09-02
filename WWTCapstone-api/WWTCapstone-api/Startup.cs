@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using WWTCapstone_api.Helpers;
 using WWTCapstone_api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using AutoMapper;
 
 namespace WWTCapstone_api
 {
@@ -33,7 +34,7 @@ namespace WWTCapstone_api
             services.AddCors();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            //services.AddAutoMapper();
+            services.AddAutoMapper(typeof(Startup));
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -79,7 +80,8 @@ namespace WWTCapstone_api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options =>
-            options.WithOrigins("http://localhost:3000")
+            options.WithOrigins()
+            //("http://localhost:63851/")
             .AllowAnyHeader()
             .AllowAnyMethod());
 

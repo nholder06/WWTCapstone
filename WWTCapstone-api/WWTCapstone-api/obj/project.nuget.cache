@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "GenpPPf+uG0+Yts2i4dRSxfFJ+xSJWm0GobvVGinpfQp2VWKqvQXQPPJCn/DoqroMZIhED+uord4CASgP1eI8Q==",
+  "dgSpecHash": "IrtyKAxvgqvDPztb6b0WlTo4A0EmhMT87ZcfArcy96yMRyYt5S9GZcAYVAMQeKtAU9BD2Tw3FSo71R/IxqnkhQ==",
   "success": true,
   "projectFilePath": "C:\\WorkSpace\\WWTCapstone\\WWTCapstone-api\\WWTCapstone-api\\WWTCapstone-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\holdern\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\holdern\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
     "C:\\Users\\holdern\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.7\\microsoft.aspnetcore.authentication.jwtbearer.3.1.7.nupkg.sha512",
     "C:\\Users\\holdern\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\holdern\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

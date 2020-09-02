@@ -15,6 +15,7 @@ namespace WWTCapstone_api.Models
         public string FullName { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string Email { get; set; }
+        [Column(TypeName = "nvarchar(100)")]
         public string Password { get; set; }
     }
 }

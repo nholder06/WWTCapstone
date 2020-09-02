@@ -305,6 +305,7 @@ C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\obj\Debug\netcoreapp3.1
 C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\obj\Debug\netcoreapp3.1\WWTCapstone-api.pdb
 C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\obj\Debug\netcoreapp3.1\WWTCapstone-api.genruntimeconfig.cache
 C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\obj\Debug\netcoreapp3.1\WWTCapstone-api.csproj.CoreCompileInputs.cache
 C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\obj\Debug\netcoreapp3.1\WWTCapstone-api.MvcApplicationPartsAssemblyInfo.cache
-C:\WorkSpace\WWTCapstone\WWTCapstone-api\WWTCapstone-api\bin\Debug\netcoreapp3.1\AutoMapper.dll
