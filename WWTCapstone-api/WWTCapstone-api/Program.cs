@@ -11,14 +11,13 @@ namespace WWTCapstone_api
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IWebHost CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
            //BuildWebHost(string[] args =>    
            //WebHost.CreateDefaultBuilder(args)
            //.UseStartup<Startup>()
            //.UserUrls("http://localhost:4000")
            //.Build();
 
-           CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
              .ConfigureWebHostDefaults(webBuilder =>
              {
