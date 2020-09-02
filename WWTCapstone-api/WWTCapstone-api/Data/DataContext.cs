@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using WWTCapstone_api.Models;
 
 namespace WWTCapstone_api.Helpers
 {
-    public class DataContext
+    public class DataContext : DbContext
     {
+        public DataContext(DbContextOptions<DataContext> options) :base(options) { }
+
+        public DbSet<User> Users { get; set; }
     }
 }
