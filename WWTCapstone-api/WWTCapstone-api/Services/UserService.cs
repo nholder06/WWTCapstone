@@ -8,31 +8,34 @@ namespace WWTCapstone_api.Services
 {
     public class UserService : IUserService
     {
+
       private DataContext _context;
+
        public UserService(DataContext context)
        {
           _context = context;
-        }
+       }
 
         public User Authenticate(string email, string password)
        {
            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            { 
+
+           {
                 return null;
            }
 
-            var user = _context.User.SingleOrDefault(x => x.Email == email);
+             var user = _context.User.SingleOrDefault(x => x.Email == email);
 
 
            if (user == null)
-          {
+           {
                return null;
            }
 
            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
            {
                return null;
-            }
+           }
 
             return user;
         }

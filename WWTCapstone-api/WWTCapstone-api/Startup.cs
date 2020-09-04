@@ -31,10 +31,10 @@ namespace WWTCapstone_api
 
             services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            services.AddAutoMapper(typeof(Startup));
+            
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -52,7 +52,7 @@ namespace WWTCapstone_api
                     {
                         OnTokenValidated = context =>
                         {
-                            var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                            var userService = context.HttpContext.RequestServices.GetRequiredService<UserService>();
                             var userId = int.Parse(context.Principal.Identity.Name);
                             var user = userService.GetById(userId);
                             if (user == null)
@@ -73,6 +73,7 @@ namespace WWTCapstone_api
                         ValidateAudience = false
                     };
                 });
+
             services.AddScoped<IUserService, UserService>();
         }
 
@@ -85,9 +86,6 @@ namespace WWTCapstone_api
             .AllowAnyHeader()
             .AllowAnyMethod());
 
-            app.UseAuthentication();
-            //app.UseMvc();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -95,6 +93,7 @@ namespace WWTCapstone_api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

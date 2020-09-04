@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using WWTCapstone_api.Models;
 
 namespace WWTCapstone_api.Helpers

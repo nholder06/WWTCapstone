@@ -24,7 +24,6 @@
     ".NETCoreApp,Version=v3.1": {
       "WWTCapstone-api/1.0.0": {
         "dependencies": {
-          "AutoMapper": "10.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.7",
           "Microsoft.AspNetCore.Cors": "2.2.0",
