@@ -9,22 +9,29 @@ namespace WWTCapstone_api.Models
         [Key]
         public int Id { get; set; }
 
-        [Column(TypeName = "nvarchar(100)")]
-        public string Name { get; set; }
-
-        [Column(TypeName = "int")]
-        public string Age { get; set; }
-
-        [Column(TypeName = "nvarchar(100)")]
-        public DateTime Birthday { get; set; }
-
-        [Column(TypeName = "nvarchar(100)")]
         public string Type { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
+        public string Name { get; set; }
+
+        public string Age { get; set; }
+
+        public DateTime Birthday { get; set; }
+
         public string Breed { get; set; }
 
+        public string PrefferedVet { get; set; }
 
+        public string VetPhoneNumber { get; set; }
+
+        public string FoodRoutine { get; set; }
+
+        public string Commands { get; set; }
+
+        public string Likes { get; set; }
+
+        public string Dislikes { get; set; }
+
+        public string Notes { get; set; }
 
     }
 }

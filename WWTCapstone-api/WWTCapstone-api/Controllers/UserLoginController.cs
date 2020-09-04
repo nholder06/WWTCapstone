@@ -41,7 +41,7 @@ namespace WWTCapstone_api.Controllers
             
             if(user == null)
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Email or password is incorrect" });
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();

@@ -9,7 +9,7 @@ namespace WWTCapstone_api.Services
     public class UserService : IUserService
     {
 
-      private DataContext _context;
+       private DataContext _context;
 
        public UserService(DataContext context)
        {
@@ -24,7 +24,7 @@ namespace WWTCapstone_api.Services
                 return null;
            }
 
-             var user = _context.User.SingleOrDefault(x => x.Email == email);
+           var user = _context.User.SingleOrDefault(x => x.Email == email);
 
 
            if (user == null)
@@ -63,7 +63,7 @@ namespace WWTCapstone_api.Services
             user.PasswordSalt = passwordSalt;
 
            _context.User.Add(user);
-            _context.SaveChanges();
+           _context.SaveChanges();
 
             return user;
         }

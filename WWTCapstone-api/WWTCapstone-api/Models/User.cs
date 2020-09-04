@@ -19,5 +19,7 @@ namespace WWTCapstone_api.Models
 
         [Column(TypeName = "varbinary(500)")]
         public byte[] PasswordSalt { get; set; }
+        
+        public Pet[] Pets { get; set;}
     }
 }
