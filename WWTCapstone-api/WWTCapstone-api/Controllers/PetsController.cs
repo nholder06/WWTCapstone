@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WWTCapstone_api.Helpers;
@@ -10,48 +12,48 @@ namespace WWTCapstone_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class PetsController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public UserController(DataContext context)
+        public PetsController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/User
+        // GET: api/Pets
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPet()
         {
-            return await _context.User.ToListAsync();
+            return await _context.Pet.ToListAsync();
         }
 
-        // GET: api/User/5
+        // GET: api/Pets/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<Pet>> GetPet(int id)
         {
-            var user = await _context.User.FindAsync(id);
+            var pet = await _context.Pet.FindAsync(id);
 
-            if (user == null)
+            if (pet == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return pet;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Pets/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutPet(int id, Pet pet)
         {
-            if (id != user.Id)
+            if (id != pet.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(pet).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +61,7 @@ namespace WWTCapstone_api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!PetExists(id))
                 {
                     return NotFound();
                 }
@@ -72,37 +74,37 @@ namespace WWTCapstone_api.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Pets
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<User>> PostUser(User user)
-        //{
-        //    _context.User.Add(user);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        //}
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
+        [HttpPost]
+        public async Task<ActionResult<Pet>> PostPet(Pet pet)
         {
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
+            _context.Pet.Add(pet);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetPet", new { id = pet.Id }, pet);
+        }
+
+        // DELETE: api/Pets/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Pet>> DeletePet(int id)
+        {
+            var pet = await _context.Pet.FindAsync(id);
+            if (pet == null)
             {
                 return NotFound();
             }
 
-            _context.User.Remove(user);
+            _context.Pet.Remove(pet);
             await _context.SaveChangesAsync();
 
-            return user;
+            return pet;
         }
 
-        private bool UserExists(int id)
+        private bool PetExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Pet.Any(e => e.Id == id);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace WWTCapstone_api.Models
 
         public string Name { get; set; }
 
-        public string Age { get; set; }
+        public int Age { get; set; }
 
         public DateTime Birthday { get; set; }
 

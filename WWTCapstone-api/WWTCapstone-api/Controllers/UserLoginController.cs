@@ -37,6 +37,7 @@ namespace WWTCapstone_api.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] UserDto userDto)
         {
+
             var user = _userService.Authenticate(userDto.Email, userDto.Password);
             
             if(user == null)
@@ -51,7 +52,7 @@ namespace WWTCapstone_api.Controllers
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name,
-                    user.Id.ToString())
+                                         user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -73,10 +74,11 @@ namespace WWTCapstone_api.Controllers
         public IActionResult Register([FromBody] UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
-
+            
             try
             {
                 _userService.Create(user, userDto.Password);
+                
                 return Ok();
             }
             catch (AppException ex)

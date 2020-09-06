@@ -19,7 +19,6 @@ namespace WWTCapstone_api.Services
         public User Authenticate(string email, string password)
        {
            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-
            {
                 return null;
            }
@@ -37,6 +36,7 @@ namespace WWTCapstone_api.Services
                return null;
            }
 
+
             return user;
         }
 
@@ -48,13 +48,14 @@ namespace WWTCapstone_api.Services
         {
             return _context.User.Find(id);
         }
+
         public User Create(User user, string password)
         {
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required.");
 
             if (_context.User.Any(x => x.Email == user.Email))
-                throw new AppException("This email \"" + user.Email + "\" already has an account.");
+                throw new AppException("This email ' " + user.Email + " ' already has an account.");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -64,7 +65,7 @@ namespace WWTCapstone_api.Services
 
            _context.User.Add(user);
            _context.SaveChanges();
-
+          
             return user;
         }
 
