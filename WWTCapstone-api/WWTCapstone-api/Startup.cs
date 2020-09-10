@@ -17,6 +17,7 @@ namespace WWTCapstone_api
 {
     public class Startup
     {
+        readonly string AllowSpecificOrigins = "_allowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,14 +28,22 @@ namespace WWTCapstone_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllers();
-
             services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
             services.AddAutoMapper(typeof(Startup));
-            services.AddCors();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:3000");
+                    });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-            
+  
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -80,11 +89,13 @@ namespace WWTCapstone_api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseRouting();
+
             app.UseCors(options =>
-            options.WithOrigins()
-            //("http://localhost:63851/")
+            options.WithOrigins("*")
             .AllowAnyHeader()
             .AllowAnyMethod());
+
 
             if (env.IsDevelopment())
             {
