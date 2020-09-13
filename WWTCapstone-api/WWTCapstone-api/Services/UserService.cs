@@ -151,5 +151,13 @@ namespace WWTCapstone_api.Services
             }
             return true;
         }
+
+        //public void AddPet(Pet pet, string email)
+        //{
+        //    var result = _context.User.FirstOrDefault(
+        //        c => c.Email == email);
+
+        //    var user = _mapper.Map<User>(pet);
+        //}
     }
 }

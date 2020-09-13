@@ -15,7 +15,7 @@ namespace WWTCapstone_api.Models
 
         public int Age { get; set; }
 
-        public DateTime Birthday { get; set; }
+        public string Birthday { get; set; }
 
         public string Breed { get; set; }
 

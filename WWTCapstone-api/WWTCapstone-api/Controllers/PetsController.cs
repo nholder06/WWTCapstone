@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,21 @@ namespace WWTCapstone_api.Controllers
     public class PetsController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public PetsController(DataContext context)
+        public PetsController(DataContext context, IMapper mapper)
         {
             _context = context;
-        }
+            _mapper = mapper;
+    }
 
         // GET: api/Pets
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pet>>> GetPet()
         {
+         
             return await _context.Pet.ToListAsync();
+       
         }
 
         // GET: api/Pets/5
@@ -78,12 +83,18 @@ namespace WWTCapstone_api.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Pet>> PostPet(Pet pet)
+        public async Task<ActionResult<Pet>> PostPet([FromBody]Pet pet)
         {
+
             _context.Pet.Add(pet);
+            
+            _context.SaveChanges();
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPet", new { id = pet.Id }, pet);
+            CreatedAtAction("GetPet", new { id = pet.Id }, pet);
+
+            return CreatedAtAction("GetPet", new { id = pet.Id }, pet); ;
         }
 
         // DELETE: api/Pets/5

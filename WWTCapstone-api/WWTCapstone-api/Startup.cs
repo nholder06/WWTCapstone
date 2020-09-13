@@ -61,9 +61,9 @@ namespace WWTCapstone_api
                     {
                         OnTokenValidated = context =>
                         {
-                            var userService = context.HttpContext.RequestServices.GetRequiredService<UserService>();
+                            var usersService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
                             var userId = int.Parse(context.Principal.Identity.Name);
-                            var user = userService.GetById(userId);
+                            var user = usersService.GetById(userId);
                             if (user == null)
                             {
                                 context.Fail("Unauthorized");

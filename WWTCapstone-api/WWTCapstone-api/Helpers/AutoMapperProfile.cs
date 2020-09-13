@@ -9,6 +9,7 @@ namespace WWTCapstone_api.Helpers
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
+            CreateMap<Pet, User>();
         }
     }
 }
