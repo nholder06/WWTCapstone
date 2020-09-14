@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -83,16 +84,12 @@ namespace WWTCapstone_api.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Pet>> PostPet([FromBody]Pet pet)
+        public async Task<ActionResult<Pet>> PostPet(Pet pet)
         {
 
             _context.Pet.Add(pet);
-            
-            _context.SaveChanges();
 
             await _context.SaveChangesAsync();
-
-            CreatedAtAction("GetPet", new { id = pet.Id }, pet);
 
             return CreatedAtAction("GetPet", new { id = pet.Id }, pet); ;
         }

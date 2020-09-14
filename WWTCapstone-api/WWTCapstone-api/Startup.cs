@@ -33,14 +33,15 @@ namespace WWTCapstone_api
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy(name: AllowSpecificOrigins,
-                    builder =>
+            services.AddCors
+                (options =>
                     {
-                        builder.WithOrigins("https://localhost:3000");
+                        options.AddPolicy(name: AllowSpecificOrigins,
+                        builder =>
+                        {
+                            builder.WithOrigins("https://localhost:3000/");
+                        });
                     });
-            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
   

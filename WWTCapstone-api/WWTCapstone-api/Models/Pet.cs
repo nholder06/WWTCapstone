@@ -13,17 +13,17 @@ namespace WWTCapstone_api.Models
 
         public string Name { get; set; }
 
-        public int Age { get; set; }
+        public string Age { get; set; }
 
         public string Birthday { get; set; }
 
         public string Breed { get; set; }
 
-        public string PrefferedVet { get; set; }
+        public string PreferredVet { get; set; }
 
-        public string VetPhoneNumber { get; set; }
+        public string VetPhoneNum { get; set; }
 
-        public string FoodRoutine { get; set; }
+        public string Routines { get; set; }
 
         public string Commands { get; set; }
 
